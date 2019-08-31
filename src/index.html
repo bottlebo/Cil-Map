@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <button onclick="lll()">123</button>
+   
     <div id="Map">
     </div>
 </body>
@@ -34,44 +34,7 @@
     function initMap() {
         var _mapView = new mapView('Map', {width: '800px', height: '800px'});
     };
-    function lll() {
-        // var ws = new WebSocket("ws://74.119.195.11:8222")
-        // ws.onopen = () => {
-        //     console.log("onopen")
-        // }
-        var ws = new WebSocket("wss://ws2s.feling.io/")
-        console.log(ws)
-        ws.onmessage = (event) => {
-            console.log("onmessage: ", event.data)
-        }
-        ws.onopen = () => {
-            console.log("onopen")
-            ws.send(JSON.stringify(
-                {
-                    command: "connect",
-                    host: "74.119.195.11",
-                    port: 8223,
-                    id:67
-                }
-            ));
-            //ws.close()
-            // ws.send(JSON.stringify(
-            //     {
-            //         command: "send",
-            //         data: "GET / HTTP/1.1\r\nHost: 74.119.195.11:8223\r\nConnection111: close222\r\n\r\n"
-            //     }
-            // ));
-            ws.send(JSON.stringify(
-                {
-                    command: "close"
-                }
-            ));
-        }
-       
-        ws.onclose = () => {
-            console.log("onclose")
-        }
-    }
+    
 </script>
 
 </html>
