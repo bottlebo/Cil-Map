@@ -1,0 +1,15 @@
+#Map {
+  font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif"!important;
+  background: #fff;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+#Map .info{
+  font-size: 1.2em;
+  font-weight: 500
+}
+.map-icon{
+  color:white;
+  font-size: 2em
+}
