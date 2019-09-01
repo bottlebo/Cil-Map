@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open  --config-name dev"
-   
+    "dev": "webpack-dev-server --open  --config-name dev",
+    "build": "webpack -p --config-name umd"
   },
   "author": "Bo",
   "license": "ISC",
