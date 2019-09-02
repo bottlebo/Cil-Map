@@ -13,15 +13,15 @@ class mapView {
     this._element.style.height = this._settings.height;
     this._element.classList.add("map");
     this.createMap();
-    this.getNodesAlive().then((response) => this.createNodes(response.data)).catch((error) => console.log(error))
+    this.getNodesAlive().then((response) => this.createNodes(response.data)).catch((error) => console.log(error));
   }
-  getNodesAlive(){
+  getNodesAlive() {
     return axios.get('http://74.119.194.8:3323/nodes',
-    {
-      headers: {
-        "Content-Type": 'application/json;charset=UTF-8'
+      {
+        headers: {
+          "Content-Type": 'application/json;charset=UTF-8'
+        }
       }
-    }
     );
   }
   createNodes(data) {
@@ -98,18 +98,26 @@ class mapView {
       content: content
     });
     infowindow.data = data;
-    marker.addListener('mouseover', () => {
-      infowindow.open(this._map, marker);
-    });
-    marker.addListener('mouseout', function() {
-      infowindow.close();
-    });
+    if (window.orientation) {
+      marker.addListener('click', () => {
+        infowindow.open(this._map, marker);
+      });
+    }
+    else {
+      marker.addListener('mouseover', () => {
+        infowindow.open(this._map, marker);
+      });
+      marker.addListener('mouseout', function() {
+        infowindow.close();
+      });
+    }
   }
   createMap() {
     var mapOptions = {
       zoom: 1,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      gestureHandling: 'cooperative'
+      gestureHandling: 'cooperative',
+      sensor: true
     };
     this._map = new google.maps.Map(this._element,
       mapOptions);
