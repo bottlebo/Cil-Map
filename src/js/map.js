@@ -12,7 +12,9 @@ class mapView {
     this._element.style.width = this._settings.width;
     this._element.style.height = this._settings.height;
     this._element.classList.add("map");
+    this._isMobile = ('ontouchstart' in document.documentElement)
     this.createMap();
+
     this.getNodesAlive().then((response) => this.createNodes(response.data)).catch((error) => console.log(error));
   }
   getNodesAlive() {
@@ -49,7 +51,9 @@ class mapView {
         this._attachInfo(marker, nodeData)
       }
     }
+    
     this._map.fitBounds(bounds);
+
   }
   /* async getGeoData() {
     let data = [];
@@ -98,7 +102,7 @@ class mapView {
       content: content
     });
     infowindow.data = data;
-    if (window.orientation) {
+    if (this._isMobile) {
       marker.addListener('click', () => {
         infowindow.open(this._map, marker);
       });
