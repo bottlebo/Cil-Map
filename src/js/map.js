@@ -55,7 +55,7 @@ class mapView {
       const center = new google.maps.LatLng(30, -40)
       this._map.setCenter(center);
       this._map.panTo(center);
-      this._map.setZoom(2);
+      this._map.setZoom(1);
     }
     else {
       this._map.fitBounds(bounds);
