@@ -51,8 +51,16 @@ class mapView {
         this._attachInfo(marker, nodeData)
       }
     }
+    if(this._isMobile){
+      const center = new google.maps.LatLng(30, -40)
+      this._map.setCenter(center);
+      this._map.panTo(center);
+      this._map.setZoom(2);
+    }
+    else {
+      this._map.fitBounds(bounds);
+    }
     
-    this._map.fitBounds(bounds);
 
   }
   /* async getGeoData() {
